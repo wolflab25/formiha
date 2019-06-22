@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>WiFi Relay Settings</title>
+	<meta charset = "utf-8">
+	<link rel="stylesheet" href="style.css">
+	<link rel="icon" type="image/ico" href="favicon.ico" />
+	<script type="text/javascript" src="settings.js"></script>
+</head>
+
+<body>
+
+	<div class="main">
+		<div class="block-content">
+			<div class="b_title">Wi-Fi Options</div>
+			<div class="b_content">
+				<label>SSID:</label><input id="wifi_ssid" type="text" value="" pattern="[^\s]{4,20}" required title="4 to 20 characters or digits">
+				<label>Password:</label><input id="wifi_pwd" type="password" value="" pattern="[^\s]{8,20}" required title="8 to 20 characters or digits">
+				<div class="b_clear"></div>
+				<label>Static IP address:</label>
+				<select id="use_static"><option value="0">Disable</option><option value="1">Enable</option></select>
+				<label>IP Address:</label><input id="ip_address" type="text" value="">
+				<label>Net mask:</label><input id="net_mask" type="text" value="">
+				<label>Default gateway:</label><input id="default_gateway" type="text" value="">
+				<label>DNS:</label><input id="dns_1" type="text" value="">
+
+				<div class="b_clear"></div>
+			</div>
+
+			<div class="b_title">Own Wi-Fi AP</div>
+			<div class="b_content">
+				<label>SSID:</label><input id="ap_ssid" type="text" value="" pattern="[^\s]{4,20}" required title="4 to 20 characters or digits">
+				<label>Password:</label><input id="ap_pwd" type="password" value="" pattern="[^\s]{8,20}" required title="8 to 20 characters or digits">
+				
+				<div class="b_clear"></div>
+			</div>
+
+			<div class="b_title">Authentication</div>
+			<div class="b_content">
+				<label>Login:</label><input id="login" type="text" value="" pattern="[^\s]{4,20}" required title="4 to 20 characters or digits">
+				<label>Password:</label><input id="password" type="password" value="" pattern="[^\s]{8,20}" required title="8 to 20 characters or digits">
+				<div class="b_clear"></div>
+				<label>Authentication:</label>
+				<select id="use_auth"><option value="0">Disable</option><option value="1">Enable</option></select>
+				<div class="b_clear"></div>
+			</div>
+
+			<div class="b_clear"></div>
+			<button class="submit-btn" onclick="submit_cfg()">Save configuration</button>
+			<div class="b_clear"></div>
+		</div>
+
+	</div>
+</div>
+
+<script>
+	loadJSON('loadcfg', function(response) {
+		var json_obj = JSON.parse(response);
+		fill_fields(json_obj);
+	});
+</script>
+
+<footer>&copy; Alexey Khomutnikov 2019. Russia, Ussuriisk. </footer>
+</body>
+</html>
+

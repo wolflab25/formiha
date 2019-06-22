@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wifi relay</title>
+  <meta charset = "utf-8">
+  <script type="text/javascript" src="jquery.min.js"></script>
+  <script type="text/javascript" src="jquery-ui.min.js"></script>
+  <script type="text/javascript" src="settings.js"></script>
+  <script type="text/javascript" src="date.format.js"></script>
+  <script type="text/javascript" src="init.js"></script>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/ico" href="favicon.ico" />
+
+</head>
+
+<body>
+
+<header>ESP8266 Wifi relay v0.1</header>
+
+<div class="tabs">
+  <ul>
+    <li>Dashboard</li>
+    <li>Wifi settings</li>
+    <li>Device settings</li>
+    <li>Device info</li>
+
+  </ul>
+
+  <div>
+    <div>
+      <h3>Dashboard</h3>
+      <div class="b_title">
+      <button class="simple-btn" onclick="opendoor()">Открыть дверь</button>
+      </div>
+      <div class="b_title">
+      <img src='http://192.168.1.116:8084/stream.mjpg' width=640 height=480></img>
+      </div>
+
+      
+    </div>
+ 
+    <div class="chart_container">
+      <h3>Wifi settings</h3>
+<div class="main">
+    <div class="block-content">
+      <div class="b_title">Wi-Fi Options</div>
+      <div class="b_content">
+        <label>SSID:</label><input id="wifi_ssid" type="text" value="" pattern="[^\s]{4,20}" required title="4 to 20 characters or digits">
+        <label>Password:</label><input id="wifi_pwd" type="password" value="" pattern="[^\s]{8,20}" required title="8 to 20 characters or digits">
+        <div class="b_clear"></div>
+      </div>
+
+      <div class="b_title">Own Wi-Fi AP</div>
+      <div class="b_content">
+        <label>SSID:</label><input id="ap_ssid" type="text" value="" pattern="[^\s]{4,20}" required title="4 to 20 characters or digits">
+        <label>Password:</label><input id="ap_pwd" type="password" value="" pattern="[^\s]{8,20}" required title="8 to 20 characters or digits">
+        <div class="b_clear"></div>
+        <input id="use_static" type="checkbox" value="0" title="use static ip">Use static ip</input>
+        <label>IP Address:</label><input id="ip_address" type="text" value="">
+        <label>Net mask:</label><input id="net_mask" type="text" value="">
+        <label>Default gateway:</label><input id="default_gateway" type="text" value="">
+        <label>DNS:</label><input id="dns_1" type="text" value="">
+        <div class="b_clear"></div>
+      </div>
+
+      <div class="b_title">Authentication</div>
+      <div class="b_content">
+        <label>Login:</label><input id="login" type="text" value="" pattern="[^\s]{4,20}" required title="4 to 20 characters or digits">
+        <label>Password:</label><input id="password" type="password" value="" pattern="[^\s]{8,20}" required title="8 to 20 characters or digits">
+        <div class="b_clear"></div>
+        <input id="use_auth" type="checkbox" value="0" title="Authentication required">Authentication required</input>
+        <div class="b_clear"></div>
+      </div>
+
+      <div class="b_clear"></div>
+      <button class="submit-btn" onclick="submit_cfg()">Save configuration</button>
+      <div class="b_clear"></div>
+    </div>
+
+  </div>      
+    </div>
+  
+    <div class="chart_container">
+      <h3>Device settings</h3>
+      
+    </div>
+    <div class="chart_container">
+      <h3>Device info</h3>
+      
+    </div>
+
+  </div>
+</div>
+<script>
+  loadJSON('loadcfg', function(response) {
+    var json_obj = JSON.parse(response);
+    fill_fields(json_obj);
+  });
+</script>
+
+<footer>&copy; Andrey Koryagin 2017. Ukraine, Kremenchug. Alexey Khomutnikov 2018. Russia, Ussuriisk.</footer>
+</body>
+</html>
+
